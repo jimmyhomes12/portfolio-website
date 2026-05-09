@@ -36,6 +36,26 @@
     .hero-gradient {
       background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0ea5e9 100%);
     }
+    .hero-pattern-overlay {
+      --pattern-color-strong: rgba(255, 255, 255, 0.14);
+      --pattern-color-soft: rgba(255, 255, 255, 0.08);
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          var(--pattern-color-strong) 0,
+          var(--pattern-color-strong) 1px,
+          transparent 1px,
+          transparent 18px
+        ),
+        repeating-linear-gradient(
+          -45deg,
+          var(--pattern-color-soft) 0,
+          var(--pattern-color-soft) 1px,
+          transparent 1px,
+          transparent 18px
+        );
+      opacity: 0.45;
+    }
     /* Subtle card hover lift */
     .card-hover {
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -83,8 +103,9 @@
   <!-- ─────────────────────────────────────────
        HERO
   ───────────────────────────────────────── -->
-  <section id="hero" class="hero-gradient min-h-screen flex items-center pt-20">
-    <div class="max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+  <section id="hero" class="hero-gradient relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <div class="hero-pattern-overlay absolute inset-0 pointer-events-none" aria-hidden="true"></div>
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
       <!-- Text -->
       <div class="flex-1 text-white">
         <p class="text-brand-100 font-medium tracking-widest uppercase text-sm mb-3">Welcome to my portfolio</p>
