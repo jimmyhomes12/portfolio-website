@@ -37,24 +37,10 @@
       background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 50%, #0ea5e9 100%);
     }
     .hero-pattern-overlay {
-      --pattern-color-strong: rgba(255, 255, 255, 0.14);
-      --pattern-color-soft: rgba(255, 255, 255, 0.08);
-      background-image:
-        repeating-linear-gradient(
-          45deg,
-          var(--pattern-color-strong) 0,
-          var(--pattern-color-strong) 1px,
-          transparent 1px,
-          transparent 18px
-        ),
-        repeating-linear-gradient(
-          -45deg,
-          var(--pattern-color-soft) 0,
-          var(--pattern-color-soft) 1px,
-          transparent 1px,
-          transparent 18px
-        );
-      opacity: 0.45;
+      --dot-color-strong: rgba(255, 255, 255, 0.2);
+      background-image: radial-gradient(circle at 1px 1px, var(--dot-color-strong) 1px, transparent 1.2px);
+      background-size: 18px 18px;
+      opacity: 0.5;
     }
     /* Subtle card hover lift */
     .card-hover {
