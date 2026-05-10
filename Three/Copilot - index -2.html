@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Analyst Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#e0f2fe',
+              100: '#bae6fd',
+              500: '#0ea5e9',
+              600: '#0284c7',
+              900: '#0b1120',
+            },
+          },
+        },
+      },
+    };
+
+    // Dark mode toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    // Load theme preference
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    });
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+  <!-- Navbar -->
+  <header class="sticky top-0 z-30 border-b border-slate-200 bg-white/80 backdrop-blur dark:bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+      <div class="flex items-center gap-2">
+        <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary-500 text-sm font-bold text-white">
+          DA
+        </div>
+        <span class="text-sm font-semibold tracking-wide text-slate-700 dark:text-slate-200">
+          Data Analyst Portfolio
+        </span>
+      </div>
+      <nav class="hidden items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300 md:flex">
+        <a href="#hero" class="hover:text-primary-500">Home</a>
+        <a href="#about" class="hover:text-primary-500">About</a>
+        <a href="#experience" class="hover:text-primary-500">Experience</a>
+        <a href="#education" class="hover:text-primary-500">Education</a>
+        <a href="#skills" class="hover:text-primary-500">Skills</a>
+        <a href="#projects" class="hover:text-primary-500">Projects</a>
+        <a href="#contact" class="hover:text-primary-500">Contact</a>
+        <button
+          onclick="toggleTheme()"
+          class="rounded-full border border-slate-300 px-3 py-1 text-xs font-semibold text-slate-700 hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-200"
+        >
+          Dark / Light
+        </button>
+      </nav>
+      <button
+        onclick="toggleTheme()"
+        class="inline-flex items-center justify-center rounded-full border border-slate-300 p-2 text-xs text-slate-700 hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-200 md:hidden"
+        aria-label="Toggle theme"
+      >
+        ☾
+      </button>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-6xl px-4 pb-16 pt-10 md:pt-16">
+    <!-- Hero Section -->
+    <section id="hero" class="grid gap-10 md:grid-cols-2 md:items-center">
+      <div class="space-y-6">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+          Portfolio • Data Analytics
+        </p>
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 sm:text-4xl lg:text-5xl">
+          Steven Johnson
+          <span class="block text-primary-600 dark:text-primary-400">
+            <span id="typing" class="border-r-2 border-primary-500 pr-1">Data Analyst</span>
+          </span>
+        </h1>
+        <p class="max-w-xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          Data Analyst with a passion for transforming raw data into clear, actionable business insights. Experienced in
+          building dashboards, uncovering trends, and supporting data‑driven decisions that move organizations forward.
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            class="inline-flex items-center justify-center rounded-lg bg-primary-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-primary-500"
+          >
+            View Projects
+          </a>
+          <a
+            href="#"
+            class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-800 transition hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-100"
+          >
+            Download Resume
+          </a>
+          <a
+            href="#contact"
+            class="inline-flex items-center justify-center rounded-lg border border-transparent px-5 py-2.5 text-sm font-semibold text-primary-600 hover:text-primary-500 dark:text-primary-400"
+          >
+            Contact Me
+          </a>
+        </div>
+        <div class="flex flex-wrap gap-6 text-xs text-slate-500 dark:text-slate-400">
+          <div>
+            <p class="font-semibold text-slate-700 dark:text-slate-200">Actively seeking opportunities</p>
+            <p>Data Analyst • Business Intelligence • Analytics</p>
+          </div>
+          <div>
+            <p class="font-semibold text-slate-700 dark:text-slate-200">Location</p>
+            <p>Open to Remote & Hybrid Roles</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-6">
+        <div
+          class="relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-900 px-6 py-6 text-slate-100 shadow-xl dark:border-slate-700"
+        >
+          <div class="mb-4 flex items-center justify-between text-xs text-slate-400">
+            <span class="inline-flex items-center gap-1">
+              <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+              Live Metrics
+            </span>
+            <span>Analytics Snapshot</span>
+          </div>
+          <div class="grid grid-cols-3 gap-4 text-center text-xs">
+            <div class="space-y-1">
+              <p class="text-[0.65rem] uppercase tracking-wide text-slate-400">Dashboards</p>
+              <p class="text-2xl font-semibold text-emerald-400" data-counter="12">12</p>
+              <p class="text-[0.7rem] text-slate-400">Built in BI tools</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-[0.65rem] uppercase tracking-wide text-slate-400">Datasets</p>
+              <p class="text-2xl font-semibold text-sky-400" data-counter="35">35</p>
+              <p class="text-[0.7rem] text-slate-400">Analyzed end‑to‑end</p>
+            </div>
+            <div class="space-y-1">
+              <p class="text-[0.65rem] uppercase tracking-wide text-slate-400">Impact</p>
+              <p class="text-2xl font-semibold text-amber-400" data-counter="18">18%</p>
+              <p class="text-[0.7rem] text-slate-400">Avg. efficiency gain</p>
+            </div>
+          </div>
+          <div class="mt-6 h-24 rounded-xl bg-gradient-to-r from-sky-500/20 via-emerald-400/20 to-amber-400/20">
+            <!-- Decorative chart placeholder -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">About Me</h2>
+      </div>
+      <div class="grid gap-10 md:grid-cols-[2fr,1.2fr]">
+        <div class="space-y-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+          <p>
+            I transitioned into data analytics after realizing how much I enjoy uncovering patterns, solving complex
+            problems, and turning data into clear stories that drive decisions. My background combines analytical
+            thinking with a strong business mindset, allowing me to connect data insights directly to real‑world impact.
+          </p>
+          <p>
+            I work comfortably across the data lifecycle—from cleaning and transforming raw data to building dashboards
+            and presenting insights to stakeholders. I have hands‑on experience with
+            <span class="font-semibold">SQL, Excel, Python, Tableau, Power BI</span>, and modern business intelligence
+            workflows.
+          </p>
+          <p>
+            Beyond technical skills, I value clear communication, critical thinking, and collaboration. I enjoy working
+            with cross‑functional teams, asking the right questions, and making sure insights are not only accurate but
+            also understandable and actionable.
+          </p>
+        </div>
+        <div class="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <h3 class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+            Core strengths
+          </h3>
+          <ul class="space-y-2 text-slate-700 dark:text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+              <span><span class="font-semibold">Analytical storytelling</span> — translating complex data into clear narratives.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+              <span><span class="font-semibold">Stakeholder communication</span> — aligning insights with business goals.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="mt-1 h-1.5 w-1.5 rounded-full bg-primary-500"></span>
+              <span><span class="font-semibold">Collaboration</span> — working closely with product, finance, and operations teams.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Experience</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Relevant roles and impact</p>
+      </div>
+
+      <div class="space-y-6">
+        <!-- Timeline style -->
+        <div class="relative">
+          <div class="absolute left-4 top-0 h-full w-px bg-slate-200 dark:bg-slate-700"></div>
+
+          <!-- Role 1 -->
+          <div class="relative ml-8 flex gap-4">
+            <div class="z-10 mt-1 h-3 w-3 rounded-full bg-primary-600"></div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Senior Data Analyst</h3>
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Acme Analytics • Jan 2022 — Present</p>
+                </div>
+                <p class="text-xs font-medium text-slate-600 dark:text-slate-300">Remote</p>
+              </div>
+              <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">
+                Led dashboard strategy and development for revenue and operations teams. Built automated ETL pipelines,
+                standardized KPIs across business units, and delivered insights that contributed to a 12% improvement in
+                operational efficiency.
+              </p>
+              <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                SQL • Tableau • Python • Power BI • Stakeholder Engagement
+              </p>
+            </div>
+          </div>
+
+          <!-- Role 2 -->
+          <div class="relative ml-8 mt-6 flex gap-4">
+            <div class="z-10 mt-1 h-3 w-3 rounded-full bg-primary-600"></div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Data Analyst</h3>
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">Bright Insights • Jun 2019 — Dec 2021</p>
+                </div>
+                <p class="text-xs font-medium text-slate-600 dark:text-slate-300">Hybrid</p>
+              </div>
+              <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">
+                Performed cohort and retention analyses, created executive dashboards, and collaborated with product teams
+                to define metrics. Implemented data quality checks that reduced reporting errors by 30%.
+              </p>
+              <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                SQL • Excel • Statistical Analysis • Dashboard Development
+              </p>
+            </div>
+          </div>
+
+          <!-- Role 3 -->
+          <div class="relative ml-8 mt-6 flex gap-4">
+            <div class="z-10 mt-1 h-3 w-3 rounded-full bg-primary-600"></div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Business Intelligence Intern</h3>
+                  <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">DataWorks Co. • Jun 2018 — May 2019</p>
+                </div>
+                <p class="text-xs font-medium text-slate-600 dark:text-slate-300">On-site</p>
+              </div>
+              <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">
+                Supported dashboard builds, performed data cleaning and ad-hoc analyses, and helped automate weekly reports
+                using SQL and Excel macros.
+              </p>
+              <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+                SQL • Excel • Reporting Automation
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Education</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Formal training and certifications</p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">M.S. Data Analytics</h3>
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">University of Tech • 2017 — 2019</p>
+          <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">
+            Focus on statistical modeling, machine learning fundamentals, and data visualization. Thesis on predictive
+            modeling for customer retention.
+          </p>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">B.S. Economics</h3>
+          <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">State University • 2013 — 2017</p>
+          <p class="mt-3 text-sm text-slate-700 dark:text-slate-300">
+            Coursework in econometrics, statistics, and data-driven decision making. Built several projects using Excel and SQL.
+          </p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="md:col-span-2 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">Certifications</h3>
+          <div class="mt-3 flex flex-wrap gap-3 text-xs">
+            <span class="rounded-full border border-slate-300 px-3 py-1 text-slate-700 dark:border-slate-600 dark:text-slate-200">Tableau Desktop Specialist</span>
+            <span class="rounded-full border border-slate-300 px-3 py-1 text-slate-700 dark:border-slate-600 dark:text-slate-200">Microsoft Certified: Data Analyst Associate (Power BI)</span>
+            <span class="rounded-full border border-slate-300 px-3 py-1 text-slate-700 dark:border-slate-600 dark:text-slate-200">Google Data Analytics Professional Certificate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Skills</h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <!-- Skill card -->
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Core tools</p>
+          <div class="mt-3 space-y-3 text-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">SQL</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Python</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Intermediate</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Excel</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">BI & viz</p>
+          <div class="mt-3 space-y-3 text-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Tableau</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Power BI</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Dashboard Development</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">Analytics</p>
+          <div class="mt-3 space-y-3 text-sm">
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Data Cleaning</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Data Visualization</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Advanced</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Statistical Analysis</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Intermediate</span>
+            </div>
+            <div class="flex items-center justify-between gap-2">
+              <span class="text-slate-700 dark:text-slate-200">Business Intelligence</span>
+              <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">Intermediate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Projects</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Selected work showcasing dashboards, analytics, and business impact.
+        </p>
+      </div>
+
+      <div class="grid gap-6 md:grid-cols-3">
+        <!-- Project 1 -->
+        <article
+          class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div class="h-32 bg-gradient-to-r from-sky-500/20 via-emerald-400/20 to-sky-700/30"></div>
+          <div class="flex flex-1 flex-col p-4">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">
+              Sales Performance Dashboard
+            </h3>
+            <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+              Built an interactive Tableau dashboard to track regional sales, product performance, and revenue trends,
+              enabling leadership to quickly identify growth opportunities.
+            </p>
+            <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              Tableau • SQL • Data Visualization
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <a
+                href="#"
+                class="rounded-full border border-slate-300 px-3 py-1 font-medium text-slate-700 hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-200"
+              >
+                GitHub Repo
+              </a>
+              <a
+                href="#"
+                class="rounded-full bg-primary-600 px-3 py-1 font-medium text-white hover:bg-primary-500"
+              >
+                Live Dashboard
+              </a>
+              <a
+                href="#"
+                class="rounded-full border border-transparent px-3 py-1 font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400"
+              >
+                Case Study
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article
+          class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div class="h-32 bg-gradient-to-r from-emerald-500/20 via-sky-400/20 to-emerald-700/30"></div>
+          <div class="flex flex-1 flex-col p-4">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">
+              Customer Churn Analysis
+            </h3>
+            <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+              Used Python and SQL to analyze churn drivers, segment customers, and provide recommendations that reduced
+              churn risk for key segments.
+            </p>
+            <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              Python • SQL • Statistical Analysis
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <a
+                href="#"
+                class="rounded-full border border-slate-300 px-3 py-1 font-medium text-slate-700 hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-200"
+              >
+                GitHub Repo
+              </a>
+              <a
+                href="#"
+                class="rounded-full bg-primary-600 px-3 py-1 font-medium text-white hover:bg-primary-500"
+              >
+                Live Dashboard
+              </a>
+              <a
+                href="#"
+                class="rounded-full border border-transparent px-3 py-1 font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400"
+              >
+                Case Study
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article
+          class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-slate-700 dark:bg-slate-900"
+        >
+          <div class="h-32 bg-gradient-to-r from-amber-500/20 via-sky-400/20 to-amber-700/30"></div>
+          <div class="flex flex-1 flex-col p-4">
+            <h3 class="text-sm font-semibold text-slate-900 dark:text-slate-50">
+              Operations Efficiency Dashboard
+            </h3>
+            <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+              Designed a Power BI dashboard to monitor operational KPIs, identify bottlenecks, and track process
+              improvements across teams.
+            </p>
+            <p class="mt-3 text-[0.7rem] font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
+              Power BI • Excel • Business Intelligence
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <a
+                href="#"
+                class="rounded-full border border-slate-300 px-3 py-1 font-medium text-slate-700 hover:border-primary-500 hover:text-primary-600 dark:border-slate-600 dark:text-slate-200"
+              >
+                GitHub Repo
+              </a>
+              <a
+                href="#"
+                class="rounded-full bg-primary-600 px-3 py-1 font-medium text-white hover:bg-primary-500"
+              >
+                Live Dashboard
+              </a>
+              <a
+                href="#"
+                class="rounded-full border border-transparent px-3 py-1 font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400"
+              >
+                Case Study
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Optional Blog Section -->
+    <section id="blog" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Analytics Articles</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Short write‑ups on data, dashboards, and decision‑making.
+        </p>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+            Data storytelling
+          </p>
+          <h3 class="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-50">
+            Designing Dashboards That Executives Actually Use
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+            A practical framework for building dashboards that answer real business questions instead of just showing charts.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+            SQL & modeling
+          </p>
+          <h3 class="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-50">
+            From Raw Tables to Reliable Metrics
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+            How to structure SQL queries and data models so metrics stay consistent across teams.
+          </p>
+        </article>
+        <article class="rounded-2xl border border-slate-200 bg-white p-4 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-primary-600 dark:text-primary-400">
+            Analytics process
+          </p>
+          <h3 class="mt-2 text-sm font-semibold text-slate-900 dark:text-slate-50">
+            Asking Better Questions Before Analyzing Data
+          </h3>
+          <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+            Why great analysis starts with clarifying the decision, not just exploring the dataset.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Contact Me</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">
+          Open to Data Analyst, BI, and Analytics roles.
+        </p>
+      </div>
+      <div class="grid gap-8 md:grid-cols-2">
+        <div class="space-y-4 text-sm text-slate-700 dark:text-slate-300">
+          <p>
+            If you’d like to discuss a role, a project, or just talk about data, feel free to reach out. I’m happy to
+            share more details about my work, walk through dashboards, or collaborate on analytics challenges.
+          </p>
+          <div class="space-y-2 text-sm">
+            <p><span class="font-semibold">Email:</span> your.email@example.com</p>
+            <p><span class="font-semibold">LinkedIn:</span> linkedin.com/in/your‑profile</p>
+            <p><span class="font-semibold">GitHub:</span> github.com/your‑username</p>
+          </div>
+        </div>
+        <form class="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
+          <div>
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              Name
+            </label>
+            <input
+              type="text"
+              class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              Email
+            </label>
+            <input
+              type="email"
+              class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              placeholder="you@example.com"
+            />
+          </div>
+          <div>
+            <label class="mb-1 block text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
+              Message
+            </label>
+            <textarea
+              rows="4"
+              class="w-full rounded-lg border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-900 focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-slate-600 dark:bg-slate-950 dark:text-slate-100"
+              placeholder="Tell me about the role, project, or idea..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="inline-flex w-full items-center justify-center rounded-lg bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-primary-500"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-500 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-400">
+    <p>© <span id="year"></span> Steven Johnson • Data Analyst Portfolio</p>
+  </footer>
+
+  <script>
+    // Simple typing effect for "Data Analyst"
+    const typingEl = document.getElementById('typing');
+    const text = 'Data Analyst';
+    let index = 0;
+    function type() {
+      index = (index + 1) % (text.length + 1);
+      typingEl.textContent = text.slice(0, index);
+    }
+    setInterval(type, 150);
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Small helper: replace SkillItem placeholders (for plain HTML) -->
+  <script>
+    // Replace <SkillItem> pseudo-tags with actual HTML (since this is not React)
+    document.querySelectorAll('SkillItem').forEach((el) => {
+      const label = el.getAttribute('label');
+      const level = el.getAttribute('level');
+      const wrapper = document.createElement('div');
+      wrapper.className = 'flex items-center justify-between gap-2';
+      wrapper.innerHTML = `
+        <span class="text-slate-700 dark:text-slate-200">${label}</span>
+        <span class="rounded-full bg-slate-100 px-2 py-0.5 text-[0.7rem] font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">${level}</span>
+      `;
+      el.replaceWith(wrapper);
+    });
+  </script>
+</body>
+</html>
