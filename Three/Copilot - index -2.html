@@ -45,16 +45,7 @@
     });
   </script>
   <style>
-    .page-section { max-width: 100%; padding: 0; }
-    .section-tag {
-      margin-bottom: 0.75rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgb(2 132 199);
-    }
-    .section-title { margin-bottom: 1rem; font-size: clamp(1.5rem, 2.8vw, 2.3rem); line-height: 1.2; }
+
     .about-grid { display: grid; gap: 2rem; }
     @media (min-width: 1024px) { .about-grid { grid-template-columns: 1.1fr 0.9fr; } }
     .about-text p { margin-bottom: 1rem; color: rgb(71 85 105); }
@@ -262,10 +253,11 @@
     </section>
 
     <!-- About Me Section -->
-    <section class="about-section" id="about">
-  <div class="page-section">
-    <div class="section-tag">01 — about me</div>
-    <h2 class="section-title reveal">Data-driven by passion,<br>analytical by nature.</h2>
+    <section id="about" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">About Me</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Background and expertise</p>
+      </div>
 
     <div class="about-grid">
 
@@ -408,7 +400,6 @@
       </div>
 
     </div><!-- /about-grid -->
-  </div><!-- /page-section -->
 </section>
 
     <!-- Experience Section -->
@@ -595,10 +586,11 @@
     </section>
 
     <!-- Projects Section -->
-    <section class="projects-section" id="projects">
-  <div class="page-section">
-    <div class="section-tag">02 — featured projects</div>
-    <h2 class="section-title reveal">Work that made a difference.</h2>
+    <section id="projects" class="mt-16 border-t border-slate-200 pt-12 dark:border-slate-800">
+      <div class="mb-6 flex items-center justify-between">
+        <h2 class="text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50">Projects</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Featured analytics work</p>
+      </div>
 
     <!-- Filter bar -->
     <div class="filter-bar reveal delay-1">
@@ -964,7 +956,6 @@
       </div>
 
     </div><!-- /projects-grid -->
-  </div><!-- /page-section -->
 </section>
 
     <!-- Optional Blog Section -->
