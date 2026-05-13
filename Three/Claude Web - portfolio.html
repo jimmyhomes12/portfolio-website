@@ -1,0 +1,1291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Morgan — Data Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Fira+Code:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #070D1A;
+    --bg2: #0D1629;
+    --bg3: #111E35;
+    --surface: #14213d;
+    --surface2: #1a2a4a;
+    --accent: #00C4A3;
+    --accent2: #0090FF;
+    --accent3: #FFB347;
+    --text: #E8EDF5;
+    --text2: #8FA3BF;
+    --text3: #556882;
+    --border: rgba(0,196,163,0.15);
+    --border2: rgba(255,255,255,0.06);
+    --glow: 0 0 40px rgba(0,196,163,0.12);
+    --card-bg: rgba(20,33,61,0.6);
+  }
+  [data-theme="light"] {
+    --bg: #F4F7FB;
+    --bg2: #EAF0F8;
+    --bg3: #DDE6F2;
+    --surface: #FFFFFF;
+    --surface2: #F0F5FC;
+    --accent: #007A65;
+    --accent2: #0055CC;
+    --accent3: #B87A00;
+    --text: #0D1629;
+    --text2: #3D5470;
+    --text3: #7A94B0;
+    --border: rgba(0,122,101,0.2);
+    --border2: rgba(0,0,0,0.07);
+    --glow: 0 4px 20px rgba(0,122,101,0.08);
+    --card-bg: rgba(255,255,255,0.9);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    transition: background 0.4s, color 0.4s;
+  }
+
+  /* GRID BACKGROUND */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border2) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border2) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  section, nav, footer { position: relative; z-index: 1; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 3rem;
+    backdrop-filter: blur(20px);
+    background: rgba(7,13,26,0.85);
+    border-bottom: 1px solid var(--border2);
+    transition: background 0.4s;
+  }
+  [data-theme="light"] nav { background: rgba(244,247,251,0.9); }
+
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-logo span { color: var(--accent); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--text2);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+    position: relative;
+  }
+  .nav-links a::before {
+    content: './';
+    color: var(--accent);
+    opacity: 0.7;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-right { display: flex; align-items: center; gap: 1rem; }
+
+  .theme-toggle {
+    background: none; border: 1px solid var(--border);
+    color: var(--text2); cursor: pointer;
+    width: 38px; height: 38px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; transition: all 0.2s;
+  }
+  .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,196,163,0.08) 0%, transparent 70%);
+    top: 50%; left: 50%; transform: translate(-50%,-50%);
+    pointer-events: none;
+  }
+
+  .hero-content { max-width: 800px; }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    border: 1px solid var(--border);
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    background: rgba(0,196,163,0.05);
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(1.3)} }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 .name-line { display: block; }
+  .hero h1 .accent-line {
+    display: block;
+    color: var(--accent);
+    font-size: 0.6em;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-top: 0.3rem;
+    font-family: 'Fira Code', monospace;
+  }
+
+  .typing-container {
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1rem;
+    color: var(--accent2);
+    margin: 1.5rem 0;
+    min-height: 1.5rem;
+  }
+  .typing-cursor { display: inline-block; color: var(--accent); animation: blink 0.8s infinite; }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  .hero-summary {
+    font-size: 1.05rem;
+    color: var(--text2);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+    letter-spacing: 0.03em;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  [data-theme="dark"] .btn-primary { color: #070D1A; }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,196,163,0.3); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text2);
+    border: 1px solid var(--border2);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--border); transform: translateY(-1px); }
+
+  /* STATS BAR */
+  .stats-bar {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border2);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 5rem 3rem 0;
+  }
+
+  .stat-item {
+    background: var(--bg2);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .stat-item:hover { background: var(--bg3); }
+
+  .stat-number {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--text3);
+    margin-top: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 7rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.75rem;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-tag::after {
+    content: '';
+    flex: 0 0 40px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    color: var(--text2);
+    line-height: 1.85;
+    margin-bottom: 1.2rem;
+    font-size: 1.02rem;
+  }
+
+  .about-text p strong { color: var(--text); font-weight: 600; }
+
+  .about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .highlight-item {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 10px;
+    transition: border-color 0.2s;
+  }
+  .highlight-item:hover { border-color: var(--border); }
+
+  .highlight-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: rgba(0,196,163,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; flex-shrink: 0;
+  }
+  .highlight-text strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+  .highlight-text span {
+    font-size: 0.82rem;
+    color: var(--text3);
+    font-family: 'Fira Code', monospace;
+  }
+
+  /* SKILLS */
+  .skills-section { background: var(--bg2); }
+  .skills-section-inner { max-width: 1200px; margin: 0 auto; padding: 7rem 3rem; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .skill-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-card:hover { border-color: var(--border); transform: translateY(-3px); box-shadow: var(--glow); }
+
+  .skill-icon {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .skill-level {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.85rem;
+    text-transform: uppercase;
+  }
+  .skill-bar {
+    height: 3px;
+    background: var(--border2);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--accent);
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.35s;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    border-color: rgba(0,196,163,0.3);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(0,196,163,0.08);
+  }
+
+  .project-thumb {
+    width: 100%; height: 200px;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg3);
+  }
+
+  .project-thumb-inner {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* SVG Mini Charts as Thumbnails */
+  .project-thumb svg { width: 100%; height: 100%; }
+
+  .project-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(0,196,163,0.15);
+    border: 1px solid rgba(0,196,163,0.3);
+    color: var(--accent);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+    backdrop-filter: blur(4px);
+  }
+
+  .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex; flex-wrap: wrap; gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+  .project-tag {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    color: var(--text3);
+    background: var(--border2);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border2);
+    transition: all 0.2s;
+  }
+  .project-card:hover .project-tag {
+    color: var(--accent);
+    border-color: var(--border);
+    background: rgba(0,196,163,0.06);
+  }
+
+  .project-links {
+    display: flex; gap: 0.5rem; flex-wrap: wrap;
+  }
+
+  .btn-sm {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    padding: 0.45rem 0.9rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    border-radius: 5px;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid var(--border2);
+    color: var(--text2);
+    background: transparent;
+  }
+  .btn-sm:hover { color: var(--accent); border-color: var(--border); transform: translateY(-1px); }
+  .btn-sm.primary { background: rgba(0,196,163,0.1); border-color: var(--border); color: var(--accent); }
+  .btn-sm.primary:hover { background: rgba(0,196,163,0.2); }
+
+  /* CONTACT */
+  .contact-section { background: var(--bg2); }
+  .contact-inner {
+    max-width: 1200px; margin: 0 auto; padding: 7rem 3rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  .contact-info p {
+    color: var(--text2); line-height: 1.8; margin-bottom: 2rem;
+    font-size: 1.02rem;
+  }
+
+  .contact-methods { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-method {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    background: var(--card-bg);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .contact-method:hover { border-color: var(--border); transform: translateX(4px); }
+  .contact-method-icon {
+    width: 36px; height: 36px;
+    background: rgba(0,196,163,0.1);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .contact-method-text strong {
+    display: block; font-size: 0.85rem; font-weight: 600; color: var(--text);
+  }
+  .contact-method-text span {
+    font-family: 'Fira Code', monospace; font-size: 0.75rem; color: var(--text3);
+  }
+
+  .contact-form {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group {
+    display: flex; flex-direction: column; gap: 0.4rem;
+  }
+
+  label {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.72rem;
+    color: var(--text3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  input, textarea {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 0.9rem;
+    transition: border-color 0.2s;
+    outline: none;
+  }
+  input:focus, textarea:focus {
+    border-color: var(--accent);
+    background: var(--bg2);
+  }
+  textarea { min-height: 140px; resize: vertical; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border2);
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--bg);
+  }
+  .footer-left {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.78rem;
+    color: var(--text3);
+  }
+  .footer-left span { color: var(--accent); }
+
+  .footer-links { display: flex; gap: 1rem; }
+  .footer-links a {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border2);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    color: var(--text3);
+  }
+  .footer-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* SCROLL ANIMATION */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* RESPONSIVE */
+  @media(max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); margin: 3rem 1.5rem 0; }
+    .section { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .skills-section-inner { padding: 5rem 1.5rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .contact-inner { padding: 5rem 1.5rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  /* DECORATIVE LINE */
+  .deco-line {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    height: 1px; opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* NOTICE TOAST */
+  .toast {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    color: var(--accent);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.4s;
+    z-index: 200;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">AM<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">about</a></li>
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" title="Toggle light/dark mode">☀</button>
+    <a href="#contact" class="btn btn-primary" style="padding:0.55rem 1.25rem; font-size:0.8rem;">Let's Talk</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-badge">available for hire</div>
+    <h1>
+      <span class="name-line">Alex Morgan</span>
+      <span class="accent-line">// Data Analyst</span>
+    </h1>
+    <div class="typing-container">
+      <span id="typed-text"></span><span class="typing-cursor">▋</span>
+    </div>
+    <p class="hero-summary">
+      I transform raw data into strategic clarity — crafting dashboards, uncovering patterns,
+      and building models that drive real business decisions. Passionate about bridging the gap
+      between complex datasets and actionable insights.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn btn-primary">View Projects →</a>
+      <a href="#" class="btn btn-outline" onclick="showToast('📄 Resume downloaded successfully!')">Download Resume ↓</a>
+      <a href="#contact" class="btn btn-ghost">Contact Me</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-number" data-target="30">0</div>
+    <div class="stat-label">Projects Completed</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="5" data-suffix="+">0</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="98" data-suffix="%">0</div>
+    <div class="stat-label">Client Satisfaction</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number" data-target="12">0</div>
+    <div class="stat-label">Industries Served</div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-tag">01 — about me</div>
+  <h2 class="section-title">Data-driven by passion,<br>analytical by nature.</h2>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        My journey into data analytics began with a <strong>curiosity for the "why" behind the numbers</strong>. 
+        What started as building Excel models to track team performance evolved into a deep 
+        love for SQL queries, Python scripts, and interactive dashboards that tell compelling stories.
+      </p>
+      <p>
+        I transitioned from operations management, where I saw firsthand how <strong>data-driven decisions</strong>
+        outperformed gut instinct every time. That experience gave me a unique perspective — 
+        I understand not just the technical analysis, but the <strong>business context</strong> that makes insights actionable.
+      </p>
+      <p>
+        Today I specialize in end-to-end analytics: from <strong>data wrangling and cleaning</strong> in Python,
+        to building complex <strong>SQL pipelines</strong>, to crafting executive dashboards in 
+        <strong>Tableau and Power BI</strong> that non-technical stakeholders can immediately act upon.
+      </p>
+      <p>
+        I pride myself on being a <strong>strong communicator</strong> — translating data findings into 
+        plain language, collaborating cross-functionally, and asking the right questions before 
+        diving into the data.
+      </p>
+    </div>
+    <div class="about-highlights">
+      <div class="highlight-item reveal reveal-delay-1">
+        <div class="highlight-icon">💡</div>
+        <div class="highlight-text">
+          <strong>Critical Thinking</strong>
+          <span>Turning ambiguous problems into structured questions</span>
+        </div>
+      </div>
+      <div class="highlight-item reveal reveal-delay-2">
+        <div class="highlight-icon">📊</div>
+        <div class="highlight-text">
+          <strong>Data Visualization</strong>
+          <span>Tableau · Power BI · Matplotlib · Plotly</span>
+        </div>
+      </div>
+      <div class="highlight-item reveal reveal-delay-2">
+        <div class="highlight-icon">🔗</div>
+        <div class="highlight-text">
+          <strong>Business Intelligence</strong>
+          <span>KPI frameworks · ETL pipelines · Data modeling</span>
+        </div>
+      </div>
+      <div class="highlight-item reveal reveal-delay-3">
+        <div class="highlight-icon">🗣️</div>
+        <div class="highlight-text">
+          <strong>Communication & Collaboration</strong>
+          <span>Presenting insights to C-suite and technical teams</span>
+        </div>
+      </div>
+      <div class="highlight-item reveal reveal-delay-3">
+        <div class="highlight-icon">🐍</div>
+        <div class="highlight-text">
+          <strong>Python & SQL</strong>
+          <span>Pandas · NumPy · Scikit-learn · PostgreSQL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="skills-section">
+  <div class="skills-section-inner" id="skills">
+    <div class="section-tag">02 — technical skills</div>
+    <h2 class="section-title">Tools & Technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-card reveal">
+        <div class="skill-icon">🛢️</div>
+        <div class="skill-name">SQL</div>
+        <div class="skill-level">Advanced · 5 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="92"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon">🐍</div>
+        <div class="skill-name">Python</div>
+        <div class="skill-level">Proficient · 4 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon">📗</div>
+        <div class="skill-name">Excel</div>
+        <div class="skill-level">Advanced · 6 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="95"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon">📈</div>
+        <div class="skill-name">Tableau</div>
+        <div class="skill-level">Proficient · 3 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon">⚡</div>
+        <div class="skill-name">Power BI</div>
+        <div class="skill-level">Proficient · 3 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="82"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-icon">🧹</div>
+        <div class="skill-name">Data Cleaning</div>
+        <div class="skill-level">Expert · 5 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="94"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-3">
+        <div class="skill-icon">📊</div>
+        <div class="skill-name">Data Visualization</div>
+        <div class="skill-level">Advanced · 4 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-card reveal">
+        <div class="skill-icon">📐</div>
+        <div class="skill-name">Statistical Analysis</div>
+        <div class="skill-level">Proficient · 4 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="80"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-icon">🧠</div>
+        <div class="skill-name">Business Intelligence</div>
+        <div class="skill-level">Advanced · 5 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-icon">🖥️</div>
+        <div class="skill-name">Dashboard Dev</div>
+        <div class="skill-level">Advanced · 4 yrs</div>
+        <div class="skill-bar"><div class="skill-bar-fill" data-width="91"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-tag">03 — projects</div>
+  <h2 class="section-title">Featured Work</h2>
+  <div class="projects-grid">
+
+    <!-- Project 1 -->
+    <div class="project-card reveal">
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0D1629"/>
+            <!-- Grid lines -->
+            <line x1="0" y1="160" x2="400" y2="160" stroke="rgba(0,196,163,0.15)" stroke-width="1"/>
+            <line x1="0" y1="120" x2="400" y2="120" stroke="rgba(0,196,163,0.08)" stroke-width="1"/>
+            <line x1="0" y1="80" x2="400" y2="80" stroke="rgba(0,196,163,0.08)" stroke-width="1"/>
+            <line x1="0" y1="40" x2="400" y2="40" stroke="rgba(0,196,163,0.08)" stroke-width="1"/>
+            <!-- Area chart -->
+            <polygon points="20,160 70,130 120,145 170,90 220,110 270,60 320,80 370,40 400,55 400,160" fill="rgba(0,196,163,0.12)"/>
+            <polyline points="20,160 70,130 120,145 170,90 220,110 270,60 320,80 370,40 400,55" fill="none" stroke="#00C4A3" stroke-width="2.5" stroke-linejoin="round"/>
+            <!-- Dots -->
+            <circle cx="270" cy="60" r="4" fill="#00C4A3"/>
+            <circle cx="370" cy="40" r="4" fill="#00C4A3"/>
+            <!-- Label -->
+            <text x="20" y="25" font-family="monospace" font-size="11" fill="rgba(0,196,163,0.7)">REVENUE TREND +34%</text>
+          </svg>
+        </div>
+        <div class="project-badge">Python · SQL</div>
+      </div>
+      <div class="project-body">
+        <div class="project-title">E-Commerce Revenue Analytics</div>
+        <div class="project-desc">
+          Built end-to-end sales performance pipeline analyzing $4M+ monthly transactions. 
+          Identified 3 key revenue leakage points, driving a 12% GMV increase through 
+          targeted recommendations to the product team.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Tableau</span>
+          <span class="project-tag">Pandas</span>
+          <span class="project-tag">dbt</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn-sm primary" onclick="showToast('🔗 Opening GitHub repo...')">⌥ GitHub</a>
+          <a href="#" class="btn-sm" onclick="showToast('📊 Opening live dashboard...')">↗ Dashboard</a>
+          <a href="#" class="btn-sm" onclick="showToast('📖 Opening case study...')">◎ Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-card reveal reveal-delay-1">
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0D1629"/>
+            <!-- Bar chart -->
+            <rect x="30" y="120" width="40" height="40" rx="3" fill="rgba(0,144,255,0.7)"/>
+            <rect x="90" y="80" width="40" height="80" rx="3" fill="rgba(0,144,255,0.7)"/>
+            <rect x="150" y="55" width="40" height="105" rx="3" fill="#0090FF"/>
+            <rect x="210" y="90" width="40" height="70" rx="3" fill="rgba(0,144,255,0.7)"/>
+            <rect x="270" y="40" width="40" height="120" rx="3" fill="#00C4A3"/>
+            <rect x="330" y="70" width="40" height="90" rx="3" fill="rgba(0,196,163,0.6)"/>
+            <!-- Axis -->
+            <line x1="20" y1="160" x2="380" y2="160" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <!-- Labels -->
+            <text x="20" y="25" font-family="monospace" font-size="11" fill="rgba(0,196,163,0.7)">CUSTOMER SEGMENTS · 6 COHORTS</text>
+            <text x="270" y="35" font-family="monospace" font-size="9" fill="#00C4A3">↑ BEST</text>
+          </svg>
+        </div>
+        <div class="project-badge" style="background:rgba(0,144,255,0.15);border-color:rgba(0,144,255,0.3);color:#0090FF;">Power BI</div>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Customer Segmentation & Churn Model</div>
+        <div class="project-desc">
+          Developed RFM-based customer segmentation for a SaaS company with 50K+ users. 
+          Predictive churn model achieved 87% accuracy, enabling targeted retention campaigns 
+          that reduced monthly churn by 18%.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Python</span>
+          <span class="project-tag">Scikit-learn</span>
+          <span class="project-tag">Power BI</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">ML</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn-sm primary" onclick="showToast('🔗 Opening GitHub repo...')">⌥ GitHub</a>
+          <a href="#" class="btn-sm" onclick="showToast('📊 Opening live dashboard...')">↗ Dashboard</a>
+          <a href="#" class="btn-sm" onclick="showToast('📖 Opening case study...')">◎ Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-card reveal reveal-delay-2">
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0D1629"/>
+            <!-- Scatter plot -->
+            <circle cx="80" cy="130" r="5" fill="rgba(255,179,71,0.8)"/>
+            <circle cx="120" cy="100" r="7" fill="rgba(255,179,71,0.8)"/>
+            <circle cx="160" cy="120" r="4" fill="rgba(255,179,71,0.6)"/>
+            <circle cx="190" cy="70" r="9" fill="#FFB347"/>
+            <circle cx="230" cy="90" r="6" fill="rgba(255,179,71,0.8)"/>
+            <circle cx="260" cy="60" r="8" fill="#FFB347"/>
+            <circle cx="300" cy="50" r="5" fill="rgba(255,179,71,0.8)"/>
+            <circle cx="340" cy="40" r="11" fill="#FFB347"/>
+            <!-- Trend line -->
+            <line x1="60" y1="145" x2="360" y2="30" stroke="rgba(0,196,163,0.6)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <!-- Axes -->
+            <line x1="50" y1="20" x2="50" y2="165" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <line x1="50" y1="165" x2="380" y2="165" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+            <text x="20" y="25" font-family="monospace" font-size="11" fill="rgba(255,179,71,0.7)">MARKET BASKET ANALYSIS</text>
+          </svg>
+        </div>
+        <div class="project-badge" style="background:rgba(255,179,71,0.12);border-color:rgba(255,179,71,0.3);color:#FFB347;">Excel · SQL</div>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Retail Market Basket & Pricing Analysis</div>
+        <div class="project-desc">
+          Conducted association rule mining across 2M+ retail transactions to surface 
+          cross-sell opportunities. Built dynamic pricing model in Excel + SQL that increased 
+          average order value by 22%.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Excel</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">Tableau</span>
+          <span class="project-tag">Statistics</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn-sm primary" onclick="showToast('🔗 Opening GitHub repo...')">⌥ GitHub</a>
+          <a href="#" class="btn-sm" onclick="showToast('📊 Opening live dashboard...')">↗ Dashboard</a>
+          <a href="#" class="btn-sm" onclick="showToast('📖 Opening case study...')">◎ Case Study</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-card reveal reveal-delay-3">
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#0D1629"/>
+            <!-- KPI Dashboard mockup -->
+            <rect x="20" y="25" width="100" height="55" rx="6" fill="rgba(0,196,163,0.08)" stroke="rgba(0,196,163,0.2)" stroke-width="1"/>
+            <text x="70" y="53" font-family="monospace" font-size="18" fill="#00C4A3" text-anchor="middle" font-weight="bold">94%</text>
+            <text x="70" y="68" font-family="monospace" font-size="8" fill="rgba(0,196,163,0.6)" text-anchor="middle">UPTIME</text>
+            <rect x="135" y="25" width="100" height="55" rx="6" fill="rgba(0,144,255,0.08)" stroke="rgba(0,144,255,0.2)" stroke-width="1"/>
+            <text x="185" y="53" font-family="monospace" font-size="18" fill="#0090FF" text-anchor="middle" font-weight="bold">1.4M</text>
+            <text x="185" y="68" font-family="monospace" font-size="8" fill="rgba(0,144,255,0.6)" text-anchor="middle">SESSIONS</text>
+            <rect x="250" y="25" width="130" height="55" rx="6" fill="rgba(255,179,71,0.08)" stroke="rgba(255,179,71,0.2)" stroke-width="1"/>
+            <text x="315" y="53" font-family="monospace" font-size="18" fill="#FFB347" text-anchor="middle" font-weight="bold">$2.1M</text>
+            <text x="315" y="68" font-family="monospace" font-size="8" fill="rgba(255,179,71,0.6)" text-anchor="middle">REVENUE</text>
+            <!-- Small sparklines below -->
+            <polyline points="20,170 50,155 80,160 110,140 140,148" fill="none" stroke="rgba(0,196,163,0.5)" stroke-width="1.5"/>
+            <polyline points="155,165 185,145 215,158 245,130 275,138" fill="none" stroke="rgba(0,144,255,0.5)" stroke-width="1.5"/>
+            <polyline points="290,172 320,155 350,160 380,135" fill="none" stroke="rgba(255,179,71,0.5)" stroke-width="1.5"/>
+            <text x="20" y="190" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.2)">Jan</text>
+            <text x="100" y="190" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.2)">Mar</text>
+            <text x="200" y="190" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.2)">Jun</text>
+            <text x="300" y="190" font-family="monospace" font-size="8" fill="rgba(255,255,255,0.2)">Sep</text>
+          </svg>
+        </div>
+        <div class="project-badge">Tableau · Power BI</div>
+      </div>
+      <div class="project-body">
+        <div class="project-title">Executive KPI Dashboard Suite</div>
+        <div class="project-desc">
+          Designed a suite of 8 interconnected executive dashboards replacing 40+ weekly 
+          manual reports. Reduced reporting time by 90% and gave leadership real-time 
+          visibility into operational performance across 5 business units.
+        </div>
+        <div class="project-tags">
+          <span class="project-tag">Tableau</span>
+          <span class="project-tag">Power BI</span>
+          <span class="project-tag">SQL</span>
+          <span class="project-tag">DAX</span>
+          <span class="project-tag">ETL</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="btn-sm primary" onclick="showToast('🔗 Opening GitHub repo...')">⌥ GitHub</a>
+          <a href="#" class="btn-sm" onclick="showToast('📊 Opening live dashboard...')">↗ Dashboard</a>
+          <a href="#" class="btn-sm" onclick="showToast('📖 Opening case study...')">◎ Case Study</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div class="contact-section">
+  <div class="contact-inner" id="contact">
+    <div class="section-tag">04 — contact</div>
+    <h2 class="section-title">Let's work together.</h2>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p>
+          I'm actively seeking full-time Data Analyst roles and am open to contract, 
+          freelance, and consulting opportunities. If you have a data challenge worth 
+          solving, I'd love to hear about it.
+        </p>
+        <div class="contact-methods">
+          <a href="mailto:alex.morgan@email.com" class="contact-method">
+            <div class="contact-method-icon">📧</div>
+            <div class="contact-method-text">
+              <strong>Email</strong>
+              <span>alex.morgan@email.com</span>
+            </div>
+          </a>
+          <a href="#" class="contact-method">
+            <div class="contact-method-icon">💼</div>
+            <div class="contact-method-text">
+              <strong>LinkedIn</strong>
+              <span>linkedin.com/in/alexmorgan-data</span>
+            </div>
+          </a>
+          <a href="#" class="contact-method">
+            <div class="contact-method-icon">🐙</div>
+            <div class="contact-method-text">
+              <strong>GitHub</strong>
+              <span>github.com/alexmorgan-data</span>
+            </div>
+          </a>
+          <a href="#" class="contact-method">
+            <div class="contact-method-icon">📋</div>
+            <div class="contact-method-text">
+              <strong>Resume / CV</strong>
+              <span>Download PDF · Last updated May 2026</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="company">Company / Organization</label>
+          <input type="text" id="company" placeholder="Where do you work?">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Tell me about your data challenge or opportunity..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Send Message →
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <div style="font-size:1rem;font-weight:700;margin-bottom:0.3rem;font-family:'Syne',sans-serif;color:var(--text);">Alex Morgan</div>
+    <div>Designed & built with <span>♥</span> · © 2026 · All rights reserved</div>
+  </div>
+  <div class="footer-links">
+    <a href="#" title="LinkedIn" onclick="showToast('Opening LinkedIn...')">in</a>
+    <a href="#" title="GitHub" onclick="showToast('Opening GitHub...')">gh</a>
+    <a href="#" title="Tableau Public" onclick="showToast('Opening Tableau Public...')">tb</a>
+    <a href="mailto:alex.morgan@email.com" title="Email">@</a>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+  // THEME TOGGLE
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.dataset.theme === 'dark';
+    html.dataset.theme = isDark ? 'light' : 'dark';
+    document.querySelector('.theme-toggle').textContent = isDark ? '☾' : '☀';
+  }
+
+  // TYPING ANIMATION
+  const phrases = [
+    'I query. I clean. I visualize.',
+    'Turning data into decisions.',
+    'SQL · Python · Tableau · Power BI',
+    'Seeking a Data Analyst role.',
+    'Let\'s find insights together.',
+  ];
+  let phraseIdx = 0, charIdx = 0, deleting = false;
+  const typedEl = document.getElementById('typed-text');
+
+  function typeEffect() {
+    const phrase = phrases[phraseIdx];
+    if (!deleting) {
+      typedEl.textContent = phrase.slice(0, ++charIdx);
+      if (charIdx === phrase.length) {
+        deleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+      }
+    } else {
+      typedEl.textContent = phrase.slice(0, --charIdx);
+      if (charIdx === 0) {
+        deleting = false;
+        phraseIdx = (phraseIdx + 1) % phrases.length;
+      }
+    }
+    setTimeout(typeEffect, deleting ? 45 : 75);
+  }
+  typeEffect();
+
+  // SCROLL REVEAL
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Animate skill bars
+        const bar = e.target.querySelector('.skill-bar-fill');
+        if (bar) bar.style.width = bar.dataset.width + '%';
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.skill-card').forEach(el => revealObserver.observe(el));
+
+  // COUNTER ANIMATION
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+    function update(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.querySelectorAll('[data-target]').forEach(animateCounter);
+        statObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsBar = document.querySelector('.stats-bar');
+  if (statsBar) statObserver.observe(statsBar);
+
+  // TOAST
+  let toastTimer;
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+
+  // FORM
+  function handleSubmit(e) {
+    e.preventDefault();
+    showToast('✅ Message sent! I\'ll get back to you soon.');
+    e.target.reset();
+  }
+
+  // SMOOTH SCROLL FOR NAV
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', e => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
