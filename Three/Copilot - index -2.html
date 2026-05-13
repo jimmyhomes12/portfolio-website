@@ -1073,11 +1073,43 @@
             If you’d like to discuss a role, a project, or just talk about data, feel free to reach out. I’m happy to
             share more details about my work, walk through dashboards, or collaborate on analytics challenges.
           </p>
-          <div class="space-y-2 text-sm">
-            <p><span class="font-semibold">Email:</span> StevenLegoute@yahoo.com</p>
-            <p><span class="font-semibold">LinkedIn:</span> linkedin.com/in/stevenlegoute</p>
-            <p><span class="font-semibold">Phone:</span> Available upon request</p>
-            <p><span class="font-semibold">GitHub:</span> Available upon request</p>
+          <div class="space-y-3 pt-1">
+            <div
+              class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/80"
+            >
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-100 text-base dark:bg-primary-900/50" aria-hidden="true">📧</div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Email</p>
+                <a href="mailto:StevenLegoute@yahoo.com" class="text-xs text-slate-500 underline-offset-2 hover:underline dark:text-slate-400">StevenLegoute@yahoo.com</a>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/80"
+            >
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-100 text-base dark:bg-primary-900/50" aria-hidden="true">💼</div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/stevenlegoute" target="_blank" rel="noopener noreferrer" class="text-xs text-slate-500 underline-offset-2 hover:underline dark:text-slate-400">linkedin.com/in/stevenlegoute</a>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/80"
+            >
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-100 text-base dark:bg-primary-900/50" aria-hidden="true">🐙</div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">GitHub</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Available upon request</p>
+              </div>
+            </div>
+            <div
+              class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white/80 p-3 dark:border-slate-700 dark:bg-slate-900/80"
+            >
+              <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-primary-100 text-base dark:bg-primary-900/50" aria-hidden="true">📞</div>
+              <div>
+                <p class="text-sm font-semibold text-slate-900 dark:text-slate-100">Phone</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Available upon request</p>
+              </div>
+            </div>
           </div>
         </div>
         <form class="space-y-4 rounded-2xl border border-slate-200 bg-white p-5 text-sm shadow-sm dark:border-slate-700 dark:bg-slate-900">
@@ -1122,13 +1154,21 @@
     </section>
   </main>
 
-  <footer class="bg-gray-900 text-gray-400 text-center py-8 text-sm">
-    <p>
-      Designed &amp; built by
-      <span class="text-white font-medium">Steven Legoute</span>
-      · <span id="footer-year"></span>
-    </p>
-    <p class="mt-1 text-xs text-gray-600">Built with Tailwind CSS</p>
+  <footer class="border-t border-slate-200 bg-slate-950 px-6 py-8 text-slate-400 dark:border-slate-800 md:px-10">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 text-sm md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="text-base font-semibold text-white">Steven Legoute</div>
+        <p class="text-xs text-slate-500">
+          Designed &amp; built with <span aria-hidden="true" class="text-slate-300">♥</span><span class="sr-only">love</span> · © <span id="footer-year"></span> · All rights reserved
+        </p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em]">
+        <a href="https://www.linkedin.com/in/stevenlegoute" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile" class="rounded-md border border-slate-700 px-2 py-1 text-slate-300 transition hover:border-slate-500 hover:text-white">LinkedIn</a>
+        <span class="px-2 py-1 text-slate-500">GitHub (on request)</span>
+        <span class="px-2 py-1 text-slate-500">Tableau (on request)</span>
+        <a href="mailto:StevenLegoute@yahoo.com" aria-label="Send email to Steven Legoute" class="rounded-md border border-slate-700 px-2 py-1 text-slate-300 transition hover:border-slate-500 hover:text-white">Email</a>
+      </div>
+    </div>
   </footer>
 
   <script>
