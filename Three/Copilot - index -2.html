@@ -1238,6 +1238,17 @@
         });
       });
     });
+
+    const normalizedPath = decodeURIComponent(window.location.pathname).replace(/\/+$/, '');
+    const pathSegments = normalizedPath.split('/').filter(Boolean);
+    const parentDirName = pathSegments.length > 1 ? pathSegments[pathSegments.length - 2].toLowerCase() : '';
+    const isOpenedFromThreeDir = parentDirName === 'three';
+    if (!isOpenedFromThreeDir) {
+      document.querySelectorAll('a[href^="./projects/"]').forEach((anchor) => {
+        const originalHref = anchor.getAttribute('href');
+        anchor.setAttribute('href', `./Three/${originalHref.slice(2)}`);
+      });
+    }
   </script>
 </body>
 </html>
