@@ -1239,10 +1239,13 @@
       });
     });
 
-    const isPathInsideThree = /\/Three(\/|$)/i.test(window.location.pathname);
-    if (!isPathInsideThree) {
+    const pathSegments = decodeURIComponent(window.location.pathname).split('/').filter(Boolean);
+    const parentDirName = pathSegments.length > 1 ? pathSegments[pathSegments.length - 2].toLowerCase() : '';
+    const isOpenedFromThreeDir = parentDirName === 'three';
+    if (!isOpenedFromThreeDir) {
       document.querySelectorAll('a[href^="./projects/"]').forEach((anchor) => {
-        anchor.href = anchor.getAttribute('href').replaceAll('./projects/', './Three/projects/');
+        const originalHref = anchor.getAttribute('href');
+        anchor.href = `./Three/${originalHref.slice(2)}`;
       });
     }
   </script>
