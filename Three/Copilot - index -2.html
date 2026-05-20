@@ -1244,11 +1244,9 @@
     const parentDirName = pathSegments.length > 1 ? pathSegments[pathSegments.length - 2].toLowerCase() : '';
     const isOpenedFromThreeDir = parentDirName === 'three';
     if (!isOpenedFromThreeDir) {
-      document.querySelectorAll('a[href]').forEach((anchor) => {
+      document.querySelectorAll('a[href^="./projects/"]').forEach((anchor) => {
         const originalHref = anchor.getAttribute('href');
-        if (/^\.\/projects\//i.test(originalHref)) {
-          anchor.setAttribute('href', `./Three/${originalHref.slice(2)}`);
-        }
+        anchor.setAttribute('href', `./Three/${originalHref.slice(2)}`);
       });
     }
   </script>
