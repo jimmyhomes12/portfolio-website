@@ -1238,6 +1238,13 @@
         });
       });
     });
+
+    const isInsideThreeDir = /\/Three(\/|$)/i.test(window.location.pathname);
+    if (!isInsideThreeDir) {
+      document.querySelectorAll('a[href^="./projects/"]').forEach((anchor) => {
+        anchor.href = anchor.getAttribute('href').replace('./projects/', './Three/projects/');
+      });
+    }
   </script>
 </body>
 </html>
