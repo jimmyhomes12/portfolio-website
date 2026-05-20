@@ -1239,10 +1239,10 @@
       });
     });
 
-    const isInsideThreeDir = /\/Three(\/|$)/i.test(window.location.pathname);
-    if (!isInsideThreeDir) {
+    const isPathInsideThree = /\/Three(\/|$)/i.test(window.location.pathname);
+    if (!isPathInsideThree) {
       document.querySelectorAll('a[href^="./projects/"]').forEach((anchor) => {
-        anchor.href = anchor.getAttribute('href').replace('./projects/', './Three/projects/');
+        anchor.href = anchor.getAttribute('href').replaceAll('./projects/', './Three/projects/');
       });
     }
   </script>
