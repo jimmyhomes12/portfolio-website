@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en" class="page-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Analyst Portfolio</title>
+    <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      if (html.classList.contains('dark')) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+    });
+  </script>
+  <link rel="stylesheet" href="./styles.css">
+  <style>
+    .timeline-dot-current {
+      background: #00C4A3;
+      box-shadow: 0 0 8px rgba(0, 196, 163, 0.5);
+    }
+
+    .project-badge-rfm {
+      background: rgba(0, 144, 255, 0.14);
+      border-color: rgba(0, 144, 255, 0.3);
+      color: #0090FF;
+    }
+
+    .project-badge-excel {
+      background: rgba(255, 179, 71, 0.12);
+      border-color: rgba(255, 179, 71, 0.3);
+      color: #FFB347;
+    }
+
+    .project-badge-powerbi {
+      background: rgba(255, 179, 71, 0.12);
+      border-color: rgba(255, 179, 71, 0.3);
+      color: #FFB347;
+    }
+  </style>
+</head>
+<body class="page-body">
+  <!-- Navbar -->
+  <header class="site-header">
+    <div class="layout-container header-row">
+      <div class="brand-group">
+        <div class="brand-badge">
+          DA
+        </div>
+        <span class="brand-title">
+          Data Analyst Portfolio
+        </span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <button
+          type="button"
+          onclick="toggleTheme()"
+          class="theme-button desktop-theme-button"
+        >
+          Light / Dark
+        </button>
+      </nav>
+      <button
+        type="button"
+        onclick="toggleTheme()"
+        class="theme-button mobile-theme-button"
+        aria-label="Toggle theme"
+      >
+        ☾
+      </button>
+    </div>
+  </header>
+
+  <main class="layout-container page-main">
+    <!-- Hero Section -->
+    <section id="hero" class="hero-grid">
+      <div class="stack-large">
+        <p class="section-eyebrow">
+          Portfolio • Data Analytics
+        </p>
+        <h1 class="hero-heading">
+          Steven Legoute
+          <span class="hero-highlight">
+            <span id="typing" class="typing-text">Data Analyst</span>
+          </span>
+        </h1>
+        <p class="hero-summary">
+          Data analyst focused on SQL analysis, dashboarding, and reporting that helps teams track performance and make clear decisions.
+          Comfortable working end-to-end from messy data to stakeholder-ready insights using SQL, Python, Excel, Tableau, and Power BI.
+        </p>
+        <div class="button-row">
+          <a
+            href="#projects"
+            class="btn-primary"
+          >
+            View Projects
+          </a>
+          <a
+            href="resume.html"
+            class="btn-secondary"
+          >
+            View Resume
+          </a>
+          <a
+            href="#contact"
+            class="btn-tertiary"
+          >
+            Contact Me
+          </a>
+        </div>
+        <div class="hero-meta-grid">
+          <div>
+            <p class="hero-meta-title">Actively seeking opportunities</p>
+            <p>Data Analyst • Business Intelligence • Analytics</p>
+          </div>
+          <div>
+            <p class="hero-meta-title">Location</p>
+            <p>Atlanta, GA • Open to Remote &amp; Hybrid Roles</p>
+          </div>
+        </div>
+      </div>
+      <div class="stack-large">
+        <div
+          class="hero-panel"
+        >
+          <div class="hero-panel-top">
+            <span class="inline-note">
+              <span class="status-dot"></span>
+              Focus Areas
+            </span>
+            <span>Analytics Toolkit</span>
+          </div>
+          <div class="focus-grid">
+            <div class="stack-tight">
+              <p class="mini-label">Dashboards</p>
+              <p class="focus-value emerald">BI</p>
+              <p class="mini-caption">Tableau • Power BI • Excel</p>
+            </div>
+            <div class="stack-tight">
+              <p class="mini-label">Datasets</p>
+              <p class="focus-value sky">SQL</p>
+              <p class="mini-caption">Analysis • Cleaning • Modeling</p>
+            </div>
+            <div class="stack-tight">
+              <p class="mini-label">Impact</p>
+              <p class="focus-value amber">Ops</p>
+              <p class="mini-caption">Reporting • Automation • Insights</p>
+            </div>
+          </div>
+          <div class="hero-chart-placeholder">
+            <!-- Decorative chart placeholder -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+      </div>
+
+    <div class="about-grid">
+
+      <!-- LEFT: story + timeline -->
+      <div>
+        <div class="about-text reveal">
+            <p>I transitioned from manufacturing into data analytics and now focus on SQL, Python, and visualization tools to turn operational and business data into clear reporting. My background as a CNC machinist strengthened my precision, troubleshooting, and process-improvement mindset, which now supports my work in analytics and business intelligence. I am focused on delivering reliable analysis and stakeholder-ready insights with a strong emphasis on <strong>data accuracy, process clarity, and measurable decision support</strong>.</p>
+        </div>
+
+      </div>
+
+    </div><!-- /about-grid -->
+
+    <!-- About cards moved below the About Me text; two-column layout handled in CSS -->
+    <div class="about-cards">
+      <div class="about-card reveal delay-1">
+        <div class="card-icon">🛢️</div>
+        <div class="card-body">
+          <strong>Technical Skills</strong>
+          <span>SQL · Python · R · Tableau · Power BI<br>Excel · Data Mining · Data Visualization</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-1">
+        <div class="card-icon">🐍</div>
+        <div class="card-body">
+          <strong>Data Analysis</strong>
+          <span>Data gathering · data cleaning · analysis workflows<br>Statistical Analysis · process improvement</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-2">
+        <div class="card-icon">📊</div>
+        <div class="card-body">
+          <strong>Data Visualization</strong>
+          <span>Tableau · Power BI · Excel dashboards<br>Interactive reporting and insight communication</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-2">
+        <div class="card-icon">🧠</div>
+        <div class="card-body">
+          <strong>Data &amp; Business Analysis</strong>
+          <span>Requirements Gathering · Stakeholder Analysis<br>Business Process Modeling · Data-driven decisions</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-3">
+        <div class="card-icon">📐</div>
+        <div class="card-body">
+          <strong>Operations Background</strong>
+          <span>CNC programming and machining experience<br>Precision, quality, and process discipline</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-3">
+        <div class="card-icon">📗</div>
+        <div class="card-body">
+          <strong>Process Optimization</strong>
+          <span>Automation of repetitive tasks<br>Improved data accuracy and operational efficiency</span>
+        </div>
+      </div>
+      <div class="about-card reveal delay-4">
+        <div class="card-icon">🗣️</div>
+        <div class="card-body">
+          <strong>Communication &amp; Collaboration</strong>
+          <span>Communication · Presentation Skills<br>Critical Thinking · Collaboration</span>
+        </div>
+      </div>
+    </div>
+</section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Education</h2>
+      </div>
+
+      <div class="two-column-grid">
+        <div class="surface-card">
+          <h3 class="card-title">Bachelor of Business Administration</h3>
+          <p class="meta-text">Georgia State University • Aug 2023 — Present</p>
+          <p class="body-copy">
+            Pursuing a business degree while building a stronger foundation in analytics, decision-making, and business intelligence.
+          </p>
+        </div>
+
+        <div class="surface-card">
+          <h3 class="card-title">Associate’s Degree in Business</h3>
+          <p class="meta-text">Miami Dade College • Oct 2006 — Jun 2008</p>
+          <p class="body-copy">
+            Completed foundational business coursework and practical training that supports operations and analytical work.
+          </p>
+        </div>
+
+        <!-- Certifications -->
+        <div class="surface-card wide-card">
+          <h3 class="card-title">Certifications</h3>
+          <div class="chip-row">
+            <span class="chip">Google Data Analytics Professional Certificate</span>
+            <span class="chip">Google Business Intelligence Professional Certificate</span>
+            <span class="chip">Google AI Essentials Certificate</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Projects</h2>
+      </div>
+
+    <!-- Filter bar -->
+    <div class="filter-bar reveal delay-1">
+      <button type="button" class="filter-btn active" data-filter="all">All Projects</button>
+      <button type="button" class="filter-btn" data-filter="python">Python</button>
+      <button type="button" class="filter-btn" data-filter="sql">SQL</button>
+      <button type="button" class="filter-btn" data-filter="tableau">Tableau</button>
+      <button type="button" class="filter-btn" data-filter="powerbi">Power BI</button>
+      <button type="button" class="filter-btn" data-filter="excel">Excel</button>
+      <button type="button" class="filter-btn" data-filter="ml">Machine Learning</button>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- ── Project 1 ── -->
+      <div class="project-card reveal" data-tags="python,tableau,ml">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <line x1="0" y1="185" x2="400" y2="185" stroke="rgba(0,196,163,0.12)" stroke-width="1"/>
+            <line x1="0" y1="145" x2="400" y2="145" stroke="rgba(0,196,163,0.07)" stroke-width="1"/>
+            <line x1="0" y1="105"  x2="400" y2="105"  stroke="rgba(0,196,163,0.07)" stroke-width="1"/>
+            <line x1="0" y1="65"  x2="400" y2="65"  stroke="rgba(0,196,163,0.07)" stroke-width="1"/>
+            <defs>
+              <linearGradient id="areaGrad1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#00C4A3" stop-opacity="0.25"/>
+                <stop offset="100%" stop-color="#00C4A3" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <polygon points="20,155 70,128 120,142 170,88 220,108 270,58 320,78 380,38 380,155" fill="url(#areaGrad1)"/>
+            <polyline points="20,155 70,128 120,142 170,88 220,108 270,58 320,78 380,38" fill="none" stroke="#00C4A3" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="270" cy="58" r="4.5" fill="#00C4A3"/>
+            <circle cx="380" cy="38" r="4.5" fill="#00C4A3"/>
+            <text x="270" y="48" font-family="monospace" font-size="9" fill="#00C4A3" text-anchor="middle">Trend</text>
+            <text x="20" y="22" font-family="monospace" font-size="10.5" fill="rgba(0,196,163,0.65)">E-COMMERCE REVENUE TREND</text>
+            <text x="380" y="178" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)" text-anchor="end">Rolling period</text>
+          </svg>
+          <div class="project-badge">Python · XGBoost · Tableau</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Quantitative Finance · Time-Series Forecasting</div>
+          <div class="project-title">Gold Price Forecasting with Geopolitical Risk</div>
+          <div class="project-desc">
+            Forecasts next-day gold prices using historical market data and geopolitical risk
+            indices, with time-series feature engineering and an XGBoost regression model.
+            Includes an interactive Streamlit app to explore forecast outputs.
+          </div>
+          <div class="project-impact">End-to-end forecasting workflow with an interactive Streamlit dashboard</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">XGBoost</span>
+            <span class="project-tag">Streamlit</span>
+            <span class="project-tag">Tableau</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Time Series</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/gold-price-forecasting.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/gold-price-forecasting.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/gold-price-forecasting.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 2 ── -->
+      <div class="project-card reveal delay-1" data-tags="python,sql,tableau">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <line x1="0" y1="155" x2="400" y2="155" stroke="var(--project-thumb-line)" stroke-width="1"/>
+            <rect x="28"  y="95"  width="38" height="60" rx="3" fill="rgba(0,144,255,0.55)"/>
+            <rect x="82"  y="68"  width="38" height="87" rx="3" fill="rgba(0,144,255,0.6)"/>
+            <rect x="136" y="48"  width="38" height="107" rx="3" fill="#0090FF"/>
+            <rect x="190" y="78"  width="38" height="77" rx="3" fill="rgba(0,144,255,0.6)"/>
+            <rect x="244" y="32"  width="38" height="123" rx="3" fill="#00C4A3"/>
+            <rect x="298" y="58"  width="38" height="97" rx="3" fill="rgba(0,196,163,0.6)"/>
+            <text x="263" y="25" font-family="monospace" font-size="9" fill="#00C4A3" text-anchor="middle">BEST</text>
+            <text x="28"  y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">Dormant</text>
+            <text x="82"  y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">At-Risk</text>
+            <text x="136" y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">New</text>
+            <text x="190" y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">Regular</text>
+            <text x="244" y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">VIP</text>
+            <text x="298" y="172" font-family="monospace" font-size="8" fill="var(--project-thumb-text-soft)">Loyal</text>
+            <text x="20"  y="22"  font-family="monospace" font-size="10.5" fill="rgba(0,144,255,0.7)">CUSTOMER SEGMENTS · RFM MODEL</text>
+          </svg>
+          <div class="project-badge project-badge-rfm">Python · SQL · Tableau</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">E-commerce · Customer Segmentation</div>
+          <div class="project-title">E-commerce RFM Analysis v2 (SQL + Tableau)</div>
+          <div class="project-desc">
+            Built an end-to-end RFM pipeline with sample e-commerce data, SQLite CTEs,
+            and an interactive Tableau Public heatmap. This v2 iteration uses an improved data
+            model with relationship-based joins and revenue-encoded visualization.
+          </div>
+          <div class="project-impact">Segmented customer groups and highlighted promotion opportunities for follow-up analysis</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">SQLite</span>
+            <span class="project-tag">SQL</span>
+            <span class="project-tag">Tableau Public</span>
+            <span class="project-tag">RFM</span>
+            <span class="project-tag">CTEs</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/ecommerce-rfm-analysis.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/ecommerce-rfm-analysis.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/ecommerce-rfm-analysis.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 3 ── -->
+      <div class="project-card reveal delay-2" data-tags="excel">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <line x1="45" y1="20"  x2="45"  y2="160" stroke="var(--project-thumb-line)" stroke-width="1"/>
+            <line x1="45" y1="160" x2="385" y2="160" stroke="var(--project-thumb-line)" stroke-width="1"/>
+            <!-- Scatter dots sized by revenue -->
+            <circle cx="80"  cy="130" r="6"  fill="rgba(255,179,71,0.65)"/>
+            <circle cx="115" cy="105" r="9"  fill="rgba(255,179,71,0.7)"/>
+            <circle cx="145" cy="118" r="5"  fill="rgba(255,179,71,0.55)"/>
+            <circle cx="180" cy="72"  r="12" fill="#FFB347"/>
+            <circle cx="215" cy="92"  r="7"  fill="rgba(255,179,71,0.7)"/>
+            <circle cx="255" cy="58"  r="10" fill="#FFB347"/>
+            <circle cx="295" cy="45"  r="8"  fill="rgba(255,179,71,0.75)"/>
+            <circle cx="340" cy="35"  r="14" fill="#FFB347"/>
+            <line x1="55" y1="148" x2="375" y2="28" stroke="rgba(0,196,163,0.5)" stroke-width="1.5" stroke-dasharray="5,4"/>
+            <text x="355" y="22"  font-family="monospace" font-size="8" fill="rgba(0,196,163,0.6)">pattern</text>
+            <text x="20"  y="22"  font-family="monospace" font-size="10.5" fill="rgba(255,179,71,0.65)">MARKET BASKET CORRELATION</text>
+            <text x="45"  y="178" font-family="monospace" font-size="8"    fill="var(--project-thumb-text-soft)">Purchase Frequency →</text>
+          </svg>
+          <div class="project-badge project-badge-excel">Excel · Power Query</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Retail · Business Intelligence</div>
+          <div class="project-title">Retail Sales KPI Dashboard (Excel BI)</div>
+          <div class="project-desc">
+            Interactive Excel BI dashboard built on a multi-period retail sales dataset.
+            Tracks Revenue, Gross Margin %, Average Order Value, and YoY growth
+            across channels, regions, and product categories.
+          </div>
+          <div class="project-impact">Interactive KPI slicing for channel, region, and category performance review</div>
+          <div class="project-tags">
+            <span class="project-tag">Microsoft Excel</span>
+            <span class="project-tag">Power Query</span>
+            <span class="project-tag">PivotTables</span>
+            <span class="project-tag">KPI Dashboard</span>
+            <span class="project-tag">YoY Analysis</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/retail-sales-kpi-dashboard.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/retail-sales-kpi-dashboard.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/retail-sales-kpi-dashboard.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 4 ── -->
+      <div class="project-card reveal delay-3" data-tags="python,ml">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <!-- KPI cards row -->
+            <rect x="18" y="22" width="108" height="58" rx="6" fill="rgba(0,196,163,0.08)" stroke="rgba(0,196,163,0.22)" stroke-width="1"/>
+            <text x="72" y="47"  font-family="monospace" font-size="19" fill="#00C4A3" text-anchor="middle" font-weight="bold">94%</text>
+            <text x="72" y="63"  font-family="monospace" font-size="8"  fill="rgba(0,196,163,0.55)" text-anchor="middle">SLA UPTIME</text>
+
+            <rect x="140" y="22" width="108" height="58" rx="6" fill="rgba(0,144,255,0.08)" stroke="rgba(0,144,255,0.22)" stroke-width="1"/>
+            <text x="194" y="47" font-family="monospace" font-size="19" fill="#0090FF" text-anchor="middle" font-weight="bold">1.4M</text>
+            <text x="194" y="63" font-family="monospace" font-size="8"  fill="rgba(0,144,255,0.55)" text-anchor="middle">SESSIONS</text>
+
+            <rect x="262" y="22" width="120" height="58" rx="6" fill="rgba(255,179,71,0.08)" stroke="rgba(255,179,71,0.22)" stroke-width="1"/>
+            <text x="322" y="47" font-family="monospace" font-size="19" fill="#FFB347" text-anchor="middle" font-weight="bold">$2.1M</text>
+            <text x="322" y="63" font-family="monospace" font-size="8"  fill="rgba(255,179,71,0.55)" text-anchor="middle">REVENUE</text>
+
+            <!-- Sparklines -->
+            <polyline points="18,175 48,158 78,164 108,143 126,150" fill="none" stroke="rgba(0,196,163,0.55)" stroke-width="1.8" stroke-linejoin="round"/>
+            <polyline points="140,170 170,148 200,160 230,133 248,142" fill="none" stroke="rgba(0,144,255,0.55)" stroke-width="1.8" stroke-linejoin="round"/>
+            <polyline points="262,175 292,157 322,163 352,138 382,128" fill="none" stroke="rgba(255,179,71,0.55)" stroke-width="1.8" stroke-linejoin="round"/>
+            <text x="18" y="192" font-family="monospace" font-size="7.5" fill="var(--project-thumb-text-soft)">Jan → Dec trend</text>
+          </svg>
+          <div class="project-badge">Python · Scikit-learn</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">E-commerce · Customer Analytics</div>
+          <div class="project-title">Online Retail Customer Churn Prediction</div>
+          <div class="project-desc">
+            Machine learning project that predicts online retail customer churn and surfaces
+            the key drivers behind customer attrition using Python data analytics workflows.
+            Built to support proactive retention actions with data-backed priorities.
+          </div>
+          <div class="project-impact">Predictive churn scoring with interpretable risk drivers</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Scikit-learn</span>
+            <span class="project-tag">Pandas</span>
+            <span class="project-tag">Machine Learning</span>
+            <span class="project-tag">Churn</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/online-retail-churn-prediction.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/online-retail-churn-prediction.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/online-retail-churn-prediction.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 5 ── -->
+      <div class="project-card reveal" data-tags="python">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <!-- Heatmap grid -->
+            <text x="20" y="22" font-family="monospace" font-size="10.5" fill="rgba(0,196,163,0.65)">WEEKLY ENGAGEMENT HEATMAP</text>
+            <g font-family="monospace" font-size="8" fill="var(--project-thumb-text)">
+              <text x="20" y="50">Mon</text><text x="20" y="75">Tue</text>
+              <text x="20" y="100">Wed</text><text x="20" y="125">Thu</text>
+              <text x="20" y="150">Fri</text>
+            </g>
+            <!-- cells: 7 hours × 5 days -->
+            <g>
+              <!-- Row 1 Mon -->
+              <rect x="58" y="36" width="44" height="22" rx="3" fill="rgba(0,196,163,0.12)"/>
+              <rect x="108" y="36" width="44" height="22" rx="3" fill="rgba(0,196,163,0.28)"/>
+              <rect x="158" y="36" width="44" height="22" rx="3" fill="rgba(0,196,163,0.55)"/>
+              <rect x="208" y="36" width="44" height="22" rx="3" fill="#00C4A3"/>
+              <rect x="258" y="36" width="44" height="22" rx="3" fill="rgba(0,196,163,0.7)"/>
+              <rect x="308" y="36" width="44" height="22" rx="3" fill="rgba(0,196,163,0.4)"/>
+              <rect x="358" y="36" width="34" height="22" rx="3" fill="rgba(0,196,163,0.18)"/>
+              <!-- Row 2 Tue -->
+              <rect x="58"  y="62" width="44" height="22" rx="3" fill="rgba(0,196,163,0.22)"/>
+              <rect x="108" y="62" width="44" height="22" rx="3" fill="rgba(0,196,163,0.6)"/>
+              <rect x="158" y="62" width="44" height="22" rx="3" fill="#00C4A3"/>
+              <rect x="208" y="62" width="44" height="22" rx="3" fill="rgba(0,196,163,0.85)"/>
+              <rect x="258" y="62" width="44" height="22" rx="3" fill="rgba(0,196,163,0.5)"/>
+              <rect x="308" y="62" width="44" height="22" rx="3" fill="rgba(0,196,163,0.3)"/>
+              <rect x="358" y="62" width="34" height="22" rx="3" fill="rgba(0,196,163,0.1)"/>
+              <!-- Row 3 Wed -->
+              <rect x="58"  y="88" width="44" height="22" rx="3" fill="rgba(0,196,163,0.35)"/>
+              <rect x="108" y="88" width="44" height="22" rx="3" fill="rgba(0,196,163,0.65)"/>
+              <rect x="158" y="88" width="44" height="22" rx="3" fill="rgba(0,196,163,0.9)"/>
+              <rect x="208" y="88" width="44" height="22" rx="3" fill="#00C4A3"/>
+              <rect x="258" y="88" width="44" height="22" rx="3" fill="rgba(0,196,163,0.75)"/>
+              <rect x="308" y="88" width="44" height="22" rx="3" fill="rgba(0,196,163,0.45)"/>
+              <rect x="358" y="88" width="34" height="22" rx="3" fill="rgba(0,196,163,0.2)"/>
+              <!-- Row 4 Thu -->
+              <rect x="58"  y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.18)"/>
+              <rect x="108" y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.45)"/>
+              <rect x="158" y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.7)"/>
+              <rect x="208" y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.85)"/>
+              <rect x="258" y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.55)"/>
+              <rect x="308" y="114" width="44" height="22" rx="3" fill="rgba(0,196,163,0.35)"/>
+              <rect x="358" y="114" width="34" height="22" rx="3" fill="rgba(0,196,163,0.12)"/>
+              <!-- Row 5 Fri -->
+              <rect x="58"  y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.1)"/>
+              <rect x="108" y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.25)"/>
+              <rect x="158" y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.45)"/>
+              <rect x="208" y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.6)"/>
+              <rect x="258" y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.35)"/>
+              <rect x="308" y="140" width="44" height="22" rx="3" fill="rgba(0,196,163,0.2)"/>
+              <rect x="358" y="140" width="34" height="22" rx="3" fill="rgba(0,196,163,0.08)"/>
+            </g>
+            <g font-family="monospace" font-size="7.5" fill="var(--project-thumb-text-soft)">
+              <text x="75"  y="175" text-anchor="middle">9am</text>
+              <text x="125" y="175" text-anchor="middle">11am</text>
+              <text x="175" y="175" text-anchor="middle">1pm</text>
+              <text x="225" y="175" text-anchor="middle">3pm</text>
+              <text x="275" y="175" text-anchor="middle">5pm</text>
+              <text x="325" y="175" text-anchor="middle">7pm</text>
+              <text x="372" y="175" text-anchor="middle">9pm</text>
+            </g>
+          </svg>
+          <div class="project-badge">Python · Statistics</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">Product Analytics · A/B Testing</div>
+          <div class="project-title">Statistics Foundations &amp; A/B Testing</div>
+          <div class="project-desc">
+            Applies foundational statistics and hypothesis testing to real A/B test data,
+            evaluating conversion performance across countries and user segments to support
+            stronger experiment decisions.
+          </div>
+          <div class="project-impact">Statistical significance analysis across test segments</div>
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Statistics</span>
+            <span class="project-tag">A/B Testing</span>
+            <span class="project-tag">Hypothesis Testing</span>
+            <span class="project-tag">Experiment Design</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/statistics-ab-testing.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/statistics-ab-testing.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/statistics-ab-testing.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Project 6 ── -->
+      <div class="project-card reveal delay-1" data-tags="powerbi">
+        <div class="project-thumb">
+          <svg viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <rect width="400" height="225" fill="var(--project-thumb-bg)"/>
+            <text x="20" y="22" font-family="monospace" font-size="10.5" fill="rgba(255,179,71,0.65)">SUPPLY CHAIN COST BREAKDOWN</text>
+            <!-- Donut segments approximated as arcs using path -->
+            <!-- Using simple pie wedges as rects in a stacked visual instead -->
+            <g transform="translate(140,105)">
+              <!-- Circle background -->
+              <circle cx="0" cy="0" r="68" fill="var(--project-thumb-panel)" stroke="var(--project-thumb-panel-border)" stroke-width="1"/>
+              <!-- Segments using stroke-dasharray trick on a circle r=50, circumference≈314 -->
+              <circle cx="0" cy="0" r="50" fill="none" stroke="#FFB347" stroke-width="22" stroke-dasharray="113 201" stroke-dashoffset="0" transform="rotate(-90)"/>
+              <circle cx="0" cy="0" r="50" fill="none" stroke="rgba(0,144,255,0.8)" stroke-width="22" stroke-dasharray="82 232" stroke-dashoffset="-113" transform="rotate(-90)"/>
+              <circle cx="0" cy="0" r="50" fill="none" stroke="rgba(0,196,163,0.8)" stroke-width="22" stroke-dasharray="63 251" stroke-dashoffset="-195" transform="rotate(-90)"/>
+              <circle cx="0" cy="0" r="50" fill="none" stroke="var(--project-thumb-line)" stroke-width="22" stroke-dasharray="56 258" stroke-dashoffset="-258" transform="rotate(-90)"/>
+              <!-- Inner white circle for donut -->
+              <circle cx="0" cy="0" r="38" fill="var(--project-thumb-bg)"/>
+              <text x="0" y="5" font-family="monospace" font-size="11" fill="var(--project-thumb-text)" text-anchor="middle">$4.8M</text>
+              <text x="0" y="18" font-family="monospace" font-size="7.5" fill="var(--project-thumb-text-soft)" text-anchor="middle">total cost</text>
+            </g>
+            <!-- Legend -->
+            <rect x="240" y="60"  width="8" height="8" rx="2" fill="#FFB347"/>
+            <text x="254" y="69" font-family="monospace" font-size="9" fill="var(--project-thumb-text)">Logistics 36%</text>
+            <rect x="240" y="80"  width="8" height="8" rx="2" fill="rgba(0,144,255,0.8)"/>
+            <text x="254" y="89" font-family="monospace" font-size="9" fill="var(--project-thumb-text)">Storage 26%</text>
+            <rect x="240" y="100" width="8" height="8" rx="2" fill="rgba(0,196,163,0.8)"/>
+            <text x="254" y="109" font-family="monospace" font-size="9" fill="var(--project-thumb-text)">Labor 20%</text>
+            <rect x="240" y="120" width="8" height="8" rx="2" fill="var(--project-thumb-line)"/>
+            <text x="254" y="129" font-family="monospace" font-size="9" fill="var(--project-thumb-text)">Other 18%</text>
+          </svg>
+          <div class="project-badge project-badge-powerbi">Power BI · DAX</div>
+        </div>
+        <div class="project-body">
+          <div class="project-category">E-commerce · Business Intelligence</div>
+          <div class="project-title">E-commerce Power BI Report</div>
+          <div class="project-desc">
+            Power BI project with a semantic model and report built on e-commerce data,
+            covering sales performance, customer behavior, and product analytics for
+            business intelligence workflows.
+          </div>
+          <div class="project-impact">Semantic model plus interactive report for e-commerce analytics</div>
+          <div class="project-tags">
+            <span class="project-tag">Power BI</span>
+            <span class="project-tag">DAX</span>
+            <span class="project-tag">Data Modeling</span>
+            <span class="project-tag">Customer Analytics</span>
+            <span class="project-tag">Product Analytics</span>
+          </div>
+          <div class="project-links">
+            <a href="./projects/ecommerce-power-bi-report.html" class="btn-sm hi">⌥ Project Page</a>
+            <a href="./projects/ecommerce-power-bi-report.html#case-study" class="btn-sm">↗ Case Study</a>
+            <a href="./projects/ecommerce-power-bi-report.html#highlights" class="btn-sm">◎ Highlights</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Contact Me</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-intro">
+          <p>
+            If you’d like to discuss a role, a project, or just talk about data, feel free to reach out. I’m happy to
+            share more details about my work, walk through dashboards, or collaborate on analytics challenges.
+          </p>
+          <div class="stack-medium">
+            <div
+              class="contact-item"
+            >
+              <div class="contact-icon" aria-hidden="true">📧</div>
+              <div>
+                <p class="contact-item-title">Email</p>
+                <a href="mailto:StevenLegoute@yahoo.com" class="contact-link">StevenLegoute@yahoo.com</a>
+              </div>
+            </div>
+            <div
+              class="contact-item"
+            >
+              <div class="contact-icon" aria-hidden="true">💼</div>
+              <div>
+                <p class="contact-item-title">LinkedIn</p>
+                <a href="https://www.linkedin.com/in/stevenlegoute" target="_blank" rel="noopener noreferrer" class="contact-link">linkedin.com/in/stevenlegoute</a>
+              </div>
+            </div>
+            <div
+              class="contact-item"
+            >
+              <div class="contact-icon" aria-hidden="true">🐙</div>
+              <div>
+                <p class="contact-item-title">GitHub</p>
+              </div>
+            </div>
+            <div
+              class="contact-item"
+            >
+              <div class="contact-icon" aria-hidden="true">📞</div>
+              <div>
+                <p class="contact-item-title">Phone</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form">
+          <div>
+            <label class="form-label">
+              Name
+            </label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Your name"
+            >
+          </div>
+          <div>
+            <label class="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="you@example.com"
+            >
+          </div>
+          <div>
+            <label class="form-label">
+              Message
+            </label>
+            <textarea
+              rows="4"
+              class="form-control"
+              placeholder="Tell me about the role, project, or idea..."
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn-primary full-width"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="layout-container footer-row">
+      <div>
+        <div class="footer-name">Steven Legoute</div>
+        <p class="footer-note">
+          Designed &amp; built with <span aria-hidden="true" class="footer-heart">♥</span><span class="sr-only">love</span> · © <span id="footer-year"></span> · All rights reserved
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/stevenlegoute" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile" class="footer-link">LinkedIn</a>
+        <span class="footer-muted">GitHub (on request)</span>
+        <span class="footer-muted">Tableau (on request)</span>
+        <a href="mailto:StevenLegoute@yahoo.com" aria-label="Send email to Steven Legoute" class="footer-link">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple typing effect for "Data Analyst"
+    const typingEl = document.getElementById('typing');
+    const text = 'Data Analyst';
+    let index = 0;
+    function type() {
+      index = (index + 1) % (text.length + 1);
+      typingEl.textContent = text.slice(0, index);
+    }
+    setInterval(type, 550);
+
+    // Year
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Small helper: replace SkillItem placeholders (for plain HTML) -->
+  <script>
+    // Replace <SkillItem> pseudo-tags with actual HTML (since this is not React)
+    document.querySelectorAll('SkillItem').forEach((el) => {
+      const label = el.getAttribute('label');
+      const level = el.getAttribute('level');
+      const wrapper = document.createElement('div');
+      wrapper.className = 'skill-item';
+      wrapper.innerHTML = `
+        <span class="skill-name">${label}</span>
+        <span class="skill-level">${level}</span>
+      `;
+      el.replaceWith(wrapper);
+    });
+  </script>
+  <script>
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+      document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+    } else {
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('visible'));
+    }
+
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach((card) => {
+          const tags = (card.dataset.tags || '').split(',');
+          const show = filter === 'all' || tags.includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
